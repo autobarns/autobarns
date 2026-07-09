@@ -59,7 +59,7 @@
         .about-text h2 { font-size: 32px; color: var(--bleu-nuit); margin-bottom: 25px; }
         .about-text p { margin-bottom: 20px; color: var(--texte-gris); }
         .about-image { flex: 1; }
-        .about-image img { width: 100%; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .about-image img { width: 100%; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); object-fit: cover; height: 380px; }
 
         .pricing-section { padding: 80px 0; background-color: #EBF0F5; border-radius: 60px; }
         .section-header { text-align: center; margin-bottom: 60px; }
@@ -74,7 +74,6 @@
         .price-bubble ul li { margin-bottom: 12px; padding-left: 20px; position: relative; color: var(--texte-gris); }
         .price-bubble ul li::before { content: '✓'; color: var(--or-champagne); font-weight: bold; position: absolute; left: 0; }
         
-        /* MISE EN VALEUR DE L'OFFRE STANDARD (Leurre Apple) */
         .premium-bubble { background: var(--bleu-nuit); color: var(--blanc); transform: scale(1.1); padding: 50px 40px; box-shadow: 0 20px 40px rgba(26, 43, 76, 0.2); }
         .premium-bubble h3 { color: var(--blanc); }
         .premium-bubble .price { color: var(--or-champagne); }
@@ -161,6 +160,7 @@
         </div>
     </section>
 
+    <!-- SECTION HISTOIRE AVEC LA RENAULT 5 INCLUSE -->
     <section id="histoire" class="about-section">
         <div class="container about-flex">
             <div class="about-text">
@@ -169,7 +169,8 @@
                 <p>Notre mission est de mettre notre expertise à votre service. Nous analysons le marché, trions les annonces et épluchons les rapports à distance, où que vous soyez en France.</p>
             </div>
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600&auto=format&fit=crop" alt="Conseil Auto">
+                <!-- ICI SE TROUVE TA NOUVELLE IMAGE DE RENAULT 5 -->
+                <img src="expertise.jpg" alt="Expertise Auto Renault 5">
             </div>
         </div>
     </section>
