@@ -14,19 +14,31 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background-color: var(--fond-doux); color: var(--texte-sombre); padding: 40px 20px; }
-        .container { max-width: 600px; margin: 0 auto; background: var(--blanc); padding: 40px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
+        .container { max-width: 650px; margin: 0 auto; background: var(--blanc); padding: 40px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
         .logo { font-weight: 800; font-size: 24px; color: var(--bleu-nuit); text-align: center; margin-bottom: 20px; }
         .logo span { color: var(--or-champagne); }
         h1 { font-size: 22px; text-align: center; margin-bottom: 30px; color: var(--bleu-nuit); }
         
         label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: var(--bleu-nuit); }
-        input[type="text"], input[type="email"], textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 15px; background: var(--fond-doux); font-size: 16px; outline: none; }
+        input[type="text"], input[type="email"], textarea, select { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 15px; background: var(--fond-doux); font-size: 16px; outline: none; appearance: none; }
         
+        /* Personnalisation du menu déroulant (pour forcer l'affichage propre) */
+        select { background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231A2B4C%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 15px top 50%; background-size: 12px auto; padding-right: 40px; cursor: pointer; }
+
         .box-offre { background: #EBF0F5; padding: 15px 20px; border-radius: 15px; margin-bottom: 25px; font-weight: bold; color: var(--bleu-nuit); display: flex; justify-content: space-between; }
         
+        /* GRILLE POUR LES 3 CRITÈRES */
+        .criteria-grid { display: flex; gap: 15px; margin-bottom: 5px; }
+        .criteria-item { flex: 1; }
+
         .btn-pay { width: 100%; background: var(--bleu-nuit); color: white; padding: 16px; border-radius: 50px; font-size: 18px; font-weight: bold; border: none; cursor: pointer; transition: transform 0.2s; box-shadow: 0 10px 20px rgba(26, 43, 76, 0.15); margin-top: 10px; }
         .btn-pay:hover { transform: scale(1.01); opacity: 0.95; }
         .back-link { display: block; text-align: center; margin-top: 25px; color: #666; text-decoration: none; font-size: 14px; }
+
+        /* Sur téléphone, on met les critères les uns sous les autres */
+        @media (max-width: 600px) {
+            .criteria-grid { flex-direction: column; gap: 0; }
+        }
     </style>
 </head>
 <body>
@@ -35,7 +47,6 @@
         <div class="logo">Auto<span>Barns</span></div>
         <h1>Finalisez votre demande d'accompagnement</h1>
 
-        <!-- Formulaire relié à ton futur ID Formspree -->
         <form action="https://formspree.io/f/XXXXXX" method="POST">
             
             <div class="box-offre">
@@ -43,7 +54,6 @@
                 <span id="nom-offre" style="color: var(--or-champagne);">Chargement...</span>
             </div>
             
-            <!-- Champ masqué envoyé dans l'e-mail -->
             <input type="hidden" name="Formule Choisie" id="input-offre">
 
             <label for="name">Votre Nom et Prénom</label>
@@ -52,10 +62,58 @@
             <label for="email">Votre Adresse Email</label>
             <input type="email" id="email" name="Email du client" placeholder="jean.dupont@gmail.com" required>
 
-            <label for="besoin">Votre Besoin (Budget, Modèles recherchés...)</label>
-            <textarea id="besoin" name="Besoin du client" rows="5" placeholder="Ex: Je cherche une Peugeot 208 essence après 2021..." required></textarea>
+            <!-- LA NOUVELLE ZONE AVEC LES "ROULETTES" -->
+            <div class="criteria-grid">
+                
+                <!-- ROULETTE BUDGET -->
+                <div class="criteria-item">
+                    <label for="budget">Budget Max</label>
+                    <select id="budget" name="Budget Max" required>
+                        <option value="" disabled selected>Choisir...</option>
+                        <option value="Moins de 10 000 €">Moins de 10 000 €</option>
+                        <option value="10 000 € - 15 000 €">10 000 € - 15 000 €</option>
+                        <option value="15 000 € - 20 000 €">15 000 € - 20 000 €</option>
+                        <option value="20 000 € - 30 000 €">20 000 € - 30 000 €</option>
+                        <option value="30 000 € - 50 000 €">30 000 € - 50 000 €</option>
+                        <option value="50 000 € - 80 000 €">50 000 € - 80 000 €</option>
+                        <option value="Plus de 80 000 €">Plus de 80 000 €</option>
+                    </select>
+                </div>
 
-            <!-- LE BOUTON UNIQUE DIRECT -->
+                <!-- ROULETTE KILOMÉTRAGE -->
+                <div class="criteria-item">
+                    <label for="km">Kilométrage Max</label>
+                    <select id="km" name="Kilométrage Max" required>
+                        <option value="" disabled selected>Choisir...</option>
+                        <option value="Moins de 10 000 km">Moins de 10 000 km</option>
+                        <option value="Jusqu'à 30 000 km">Jusqu'à 30 000 km</option>
+                        <option value="Jusqu'à 60 000 km">Jusqu'à 60 000 km</option>
+                        <option value="Jusqu'à 100 000 km">Jusqu'à 100 000 km</option>
+                        <option value="Jusqu'à 150 000 km">Jusqu'à 150 000 km</option>
+                        <option value="Peu importe">Peu importe</option>
+                    </select>
+                </div>
+
+                <!-- ROULETTE ANNÉE -->
+                <div class="criteria-item">
+                    <label for="annee">Année Minimum</label>
+                    <select id="annee" name="Année Minimum" required>
+                        <option value="" disabled selected>Choisir...</option>
+                        <option value="2024 (Neuf/Récent)">2024</option>
+                        <option value="2020 et plus">2020 et plus</option>
+                        <option value="2015 et plus">2015 et plus</option>
+                        <option value="2010 et plus">2010 et plus</option>
+                        <option value="Avant 2010 (Collection/Ancien)">Avant 2010</option>
+                        <option value="Peu importe">Peu importe</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <!-- LE RESTE DU BESOIN EN TEXTE -->
+            <label for="besoin">Autres critères (Modèles, options, motorisation...)</label>
+            <textarea id="besoin" name="Détails du besoin" rows="3" placeholder="Ex: Je cherche obligatoirement une boîte automatique, plutôt une Audi A1 ou VW Polo..." required></textarea>
+
             <button type="submit" class="btn-pay">Valider et Payer <span id="prix-offre"></span></button>
         </form>
 
@@ -70,7 +128,6 @@
         const inputOffreElement = document.getElementById('input-offre');
         const prixOffreElement = document.getElementById('prix-offre');
 
-        // LES NOUVEAUX PRIX SONT APPLIQUÉS ICI
         if (offre === 'essentiel') {
             nomOffreElement.innerText = "Essentiel";
             inputOffreElement.value = "Essentiel (39€)";
