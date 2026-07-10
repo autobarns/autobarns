@@ -30,11 +30,9 @@
         nav a { text-decoration: none; color: var(--texte-gris); margin-left: 25px; font-size: 15px; font-weight: 600; transition: color 0.3s; }
         nav a:hover { color: var(--bleu-nuit); }
 
-        /* LE BOUTON BURGER (Caché sur ordinateur) */
         .menu-burger { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; z-index: 1100; }
         .menu-burger span { display: block; height: 3px; width: 100%; background-color: var(--bleu-nuit); border-radius: 3px; transition: all 0.3s ease; }
 
-        /* BOUTONS GENERAL */
         .btn-primary, .btn-secondary, .btn-outline, .btn-menu { display: inline-block; padding: 12px 30px; border-radius: 50px; font-weight: 600; text-decoration: none; text-align: center; transition: all 0.3s ease; cursor: pointer; border: none; }
         .btn-menu { background-color: var(--bleu-nuit); color: var(--blanc) !important; margin-left: 30px; }
         .btn-primary { background-color: var(--or-champagne); color: var(--blanc); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); }
@@ -90,44 +88,42 @@
         .premium-bubble ul li { color: var(--blanc); }
         .ribbon { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--or-champagne); color: #fff; padding: 6px 25px; border-radius: 20px; font-size: 13px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
 
-        /* NOUVEAU CARROUSEL D'AVIS A L'HORIZONTAL */
-        .testimonials { padding: 80px 0; text-align: center; overflow: hidden; background: #fff; }
+        /* NOUVEAU CARROUSEL BLINDÉ */
+        .testimonials { padding: 80px 0; text-align: center; background: #fff; }
         .testimonials h2 { font-size: 32px; color: var(--bleu-nuit); margin-bottom: 40px; }
         
-        .carousel-container { max-width: 850px; margin: 0 auto; position: relative; overflow: hidden; padding: 20px 10px; }
-        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); width: 100%; }
+        .carousel-wrapper { width: 100%; max-width: 800px; margin: 0 auto; overflow: hidden; position: relative; padding-bottom: 20px; }
+        .carousel-track { display: flex; transition: transform 0.6s ease-in-out; }
         
-        .testimonial-card { flex: 0 0 100%; width: 100%; background: var(--fond-doux); padding: 40px 50px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); text-align: center; }
-        .stars { color: var(--or-champagne); margin-bottom: 15px; font-size: 20px; }
-        .testimonial-card p { font-style: italic; font-size: 17px; color: var(--texte-sombre); margin-bottom: 20px; line-height: 1.6; }
-        .client-name { font-weight: 700; color: var(--bleu-nuit); font-size: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        /* On force chaque carte à prendre 100% de la largeur du conteneur */
+        .testimonial-card { min-width: 100%; padding: 40px; box-sizing: border-box; background: var(--fond-doux); border-radius: 25px; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); }
+        
+        .stars { color: var(--or-champagne); margin-bottom: 15px; font-size: 22px; }
+        .testimonial-card p { font-style: italic; font-size: 18px; color: var(--texte-sombre); margin-bottom: 25px; line-height: 1.6; }
+        .client-name { font-weight: 700; color: var(--bleu-nuit); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Boutons indicateurs (Petits points) */
-        .carousel-dots { display: flex; justify-content: center; gap: 10px; margin-top: 25px; }
-        .dot { width: 10px; height: 10px; border-radius: 50%; background: #ddd; cursor: pointer; transition: background 0.3s; }
-        .dot.active { background: var(--bleu-nuit); width: 25px; border-radius: 10px; }
+        .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s; }
+        .dot.active { background: var(--bleu-nuit); width: 30px; border-radius: 10px; }
 
         footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.7); text-align: center; padding: 40px 20px; margin-top: 50px; }
         footer .logo { color: var(--blanc); }
         .footer-links a { color: var(--blanc); text-decoration: none; margin: 0 15px; font-size: 14px; }
         .copyright { font-size: 12px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; }
 
-        /* FORMAT MOBILE ADAPTÉ */
         @media (max-width: 900px) {
             .menu-burger { display: flex; }
-            
             nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--blanc); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; }
             nav.active { display: flex; }
-            
             nav a { margin: 15px 0; font-size: 18px; width: 100%; text-align: center; }
             .btn-menu { margin-left: 0; width: 100%; }
-
             .univers-cards, .about-flex, .pricing-grid { flex-direction: column; align-items: center; }
             .card-round, .price-bubble { width: 100%; }
             .premium-bubble { transform: scale(1); padding: 40px; }
             .hero-buttons { flex-direction: column; }
             header { padding: 15px 25px; }
             .testimonial-card { padding: 30px 20px; }
+            .testimonial-card p { font-size: 16px; }
         }
     </style>
 </head>
@@ -135,14 +131,9 @@
 
     <header>
         <div class="logo">Auto<span>Barns</span></div>
-        
-        <!-- BOUTON BURGER SMARTPHONE -->
         <div class="menu-burger" id="burger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
-
         <nav id="nav-menu">
             <a href="#accueil">Accueil</a>
             <a href="#histoire">L'Expertise</a>
@@ -254,45 +245,76 @@
         </div>
     </section>
 
-    <!-- SECTION DES TEMOIGNAGES EN CARROUSEL HORIZONTAL AUTOMATIQUE -->
+    <!-- LES 10 AVIS EN CARROUSEL -->
     <section id="avis" class="testimonials">
         <div class="container">
             <h2>Ils ont trouvé leur voiture avec nous</h2>
             
-            <div class="carousel-container" id="carousel">
+            <div class="carousel-wrapper">
                 <div class="carousel-track" id="track">
                     
-                    <!-- Avis 1 -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
                         <p>"Je n'y connais rien en mécanique et j'avais très peur de me faire avoir. AutoBarns m'a trouvé une petite citadine parfaite, avec un suivi limpide. Un vrai soulagement !"</p>
                         <span class="client-name">- Sophie M.</span>
                     </div>
                     
-                    <!-- Avis 2 -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
                         <p>"Recherche d'une sportive sécurisée avec brio. L'analyse des factures et du carnet d'entretien était chirurgicale. Je recommande les yeux fermés."</p>
                         <span class="client-name">- Thomas L.</span>
                     </div>
 
-                    <!-- Avis 3 (Ajouté pour enrichir le défilement) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
                         <p>"Grâce au forfait Standard, j'ai évité un SUV qui avait un compteur trafiqué de 60 000 km ! Ils ont trouvé le piège tout de suite. Le forfait est rentabilisé immédiatement."</p>
                         <span class="client-name">- Nicolas R.</span>
                     </div>
 
-                    <!-- Avis 4 (Ajouté pour enrichir le défilement) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
                         <p>"Un service à distance ultra-réactif. Je savais exactement quels modèles cibler et j'ai acheté ma voiture en toute confiance. Merci à l'équipe."</p>
                         <span class="client-name">- Amandine K.</span>
                     </div>
 
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Recherche d'une berline allemande complexe... Le carnet d'entretien a été vérifié à la loupe par AutoBarns. Aucune mauvaise surprise le jour J."</p>
+                        <span class="client-name">- Julien B.</span>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"M'a fait gagner un temps fou. Je déteste chercher des voitures et comparer les annonces, l'équipe l'a fait pour moi en un temps record."</p>
+                        <span class="client-name">- Claire T.</span>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Négociation au poil ! Le forfait Premium a été totalement rentabilisé par la baisse de prix qu'ils m'ont aidé à obtenir face au vendeur pro."</p>
+                        <span class="client-name">- Marc E.</span>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Très professionnels. On se sent vraiment accompagné du début à la fin de l'achat. Ma nouvelle Mini Cooper est impeccable."</p>
+                        <span class="client-name">- Sarah V.</span>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Des conseils hyper précieux sur les motorisations à éviter. J'allais faire une grosse erreur financière sans leur intervention."</p>
+                        <span class="client-name">- Antoine D.</span>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Un rapport qualité/prix imbattable pour la tranquillité d'esprit que ça apporte lors d'un achat de ce montant. Je repasserai par eux."</p>
+                        <span class="client-name">- Lucas P.</span>
+                    </div>
+
                 </div>
 
-                <!-- Les petits points indicateurs sous le carrousel -->
                 <div class="carousel-dots" id="dots-container"></div>
             </div>
         </div>
@@ -308,82 +330,70 @@
         <p class="copyright">&copy; 2026 AutoBarns. Tous droits réservés.</p>
     </footer>
 
-    <!-- LOGIQUE JAVASCRIPT DU MENU BURGER ET DU CARROUSEL D'AVIS AUTOMATIQUE -->
+    <!-- SCRIPT DU MENU ET DU CARROUSEL -->
     <script>
-        // --- 1. GESTION DU MENU BURGER ---
+        // Menu Burger
         const burger = document.getElementById('burger');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('#nav-menu a');
 
-        burger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+        burger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+        navLinks.forEach(link => { link.addEventListener('click', () => { navMenu.classList.remove('active'); }); });
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // --- 2. GESTION DU CARROUSEL HORIZONTAL AUTOMATIQUE ---
+        // Nouveau Carrousel (Blindé)
         const track = document.getElementById('track');
         const cards = document.querySelectorAll('.testimonial-card');
         const dotsContainer = document.getElementById('dots-container');
         
         let currentIndex = 0;
         const totalCards = cards.length;
-        let startSlide;
+        let slideInterval;
 
-        // Créer automatiquement les petits points indicateurs selon le nombre d'avis
+        // Génération des points
         cards.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
             if (index === 0) dot.classList.add('active');
             dot.addEventListener('click', () => {
                 goToSlide(index);
-                restartAutoSlide();
+                resetInterval();
             });
             dotsContainer.appendChild(dot);
         });
 
         const dots = document.querySelectorAll('.dot');
 
-        // Fonction pour déplacer le carrousel vers un avis précis
         function goToSlide(index) {
             currentIndex = index;
+            // On translate de -100%, -200%, -300% etc...
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
             
-            // Mettre à jour le point actif
             dots.forEach(dot => dot.classList.remove('active'));
             dots[currentIndex].classList.add('active');
         }
 
-        // Fonction pour passer à l'avis suivant
         function nextSlide() {
             let nextIndex = currentIndex + 1;
-            if (nextIndex >= totalCards) {
-                nextIndex = 0; // On revient au premier avis
-            }
+            if (nextIndex >= totalCards) { nextIndex = 0; }
             goToSlide(nextIndex);
         }
 
-        // Lancer le défilement automatique (Toutes les 4 secondes)
-        function startAutoSlide() {
-            startSlide = setInterval(nextSlide, 4000);
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 4500); // Défilement toutes les 4.5 secondes
         }
 
-        function restartAutoSlide() {
-            clearInterval(startSlide);
-            startAutoSlide();
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
         }
 
-        // Arrêter le défilement si l'utilisateur passe sa souris sur l'avis
-        const carousel = document.getElementById('carousel');
-        carousel.addEventListener('mouseenter', () => clearInterval(startSlide));
-        carousel.addEventListener('mouseleave', startAutoSlide);
+        // Pause au survol
+        const wrapper = document.querySelector('.carousel-wrapper');
+        wrapper.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        wrapper.addEventListener('mouseleave', startInterval);
 
-        // Lancement au chargement de la page
-        startAutoSlide();
+        // Lancement
+        startInterval();
     </script>
 
 </body>
