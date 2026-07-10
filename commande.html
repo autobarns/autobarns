@@ -20,20 +20,12 @@
         h1 { font-size: 22px; text-align: center; margin-bottom: 30px; color: var(--bleu-nuit); }
         
         label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: var(--bleu-nuit); }
-        input[type="text"], input[type="email"], select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 15px; background: var(--fond-doux); font-size: 16px; outline: none; }
+        input[type="text"], input[type="email"], textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 15px; background: var(--fond-doux); font-size: 16px; outline: none; }
         
         .box-offre { background: #EBF0F5; padding: 15px 20px; border-radius: 15px; margin-bottom: 25px; font-weight: bold; color: var(--bleu-nuit); display: flex; justify-content: space-between; }
         
-        /* ZONE MODE DE PAIEMENT ELEGANTE */
-        .payment-options { margin-bottom: 30px; }
-        .payment-method { display: flex; align-items: center; background: var(--blanc); border: 2px solid #eee; padding: 15px; border-radius: 15px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s ease; }
-        .payment-method:hover { border-color: var(--bleu-nuit); background: var(--fond-doux); }
-        .payment-method input[type="radio"] { margin-right: 15px; width: 18px; height: 18px; accent-color: var(--bleu-nuit); }
-        .payment-method-text { font-weight: 600; color: var(--bleu-nuit); font-size: 15px; }
-        .payment-method-desc { font-size: 12px; color: #666; display: block; font-weight: normal; margin-top: 2px; }
-
-        .btn-pay { width: 100%; background: var(--bleu-nuit); color: white; padding: 16px; border-radius: 50px; font-size: 18px; font-weight: bold; border: none; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 10px 20px rgba(26, 43, 76, 0.15); }
-        .btn-pay:hover { transform: translateY(-2px); opacity: 0.95; }
+        .btn-pay { width: 100%; background: var(--bleu-nuit); color: white; padding: 16px; border-radius: 50px; font-size: 18px; font-weight: bold; border: none; cursor: pointer; transition: transform 0.2s; box-shadow: 0 10px 20px rgba(26, 43, 76, 0.15); margin-top: 10px; }
+        .btn-pay:hover { transform: scale(1.01); opacity: 0.95; }
         .back-link { display: block; text-align: center; margin-top: 25px; color: #666; text-decoration: none; font-size: 14px; }
     </style>
 </head>
@@ -43,6 +35,7 @@
         <div class="logo">Auto<span>Barns</span></div>
         <h1>Finalisez votre demande d'accompagnement</h1>
 
+        <!-- Formulaire relié à ton futur ID Formspree -->
         <form action="https://formspree.io/f/XXXXXX" method="POST">
             
             <div class="box-offre">
@@ -50,6 +43,7 @@
                 <span id="nom-offre" style="color: var(--or-champagne);">Chargement...</span>
             </div>
             
+            <!-- Champ masqué envoyé dans l'e-mail -->
             <input type="hidden" name="Formule Choisie" id="input-offre">
 
             <label for="name">Votre Nom et Prénom</label>
@@ -59,38 +53,10 @@
             <input type="email" id="email" name="Email du client" placeholder="jean.dupont@gmail.com" required>
 
             <label for="besoin">Votre Besoin (Budget, Modèles recherchés...)</label>
-            <textarea id="besoin" name="Besoin du client" rows="4" placeholder="Ex: Je cherche une Porsche Boxster 987 avec carnet d'entretien à jour..." required></textarea>
+            <textarea id="besoin" name="Besoin du client" rows="5" placeholder="Ex: Je cherche une Peugeot 208 essence après 2021..." required></textarea>
 
-            <label>Sélectionnez votre mode de règlement</label>
-            <div class="payment-options">
-                
-                <label class="payment-method">
-                    <input type="radio" name="Mode de paiement" value="Carte Bancaire" checked onchange="updateButtonText('Carte Bancaire')">
-                    <div class="payment-method-text">
-                        💳 Carte Bancaire
-                        <span class="payment-method-desc">Règlement sécurisé par carte</span>
-                    </div>
-                </label>
-
-                <label class="payment-method">
-                    <input type="radio" name="Mode de paiement" value="PayPal" onchange="updateButtonText('PayPal')">
-                    <div class="payment-method-text">
-                        🅿️ PayPal
-                        <span class="payment-method-desc">Via votre compte ou par carte</span>
-                    </div>
-                </label>
-
-                <label class="payment-method">
-                    <input type="radio" name="Mode de paiement" value="Virement Bancaire" onchange="updateButtonText('Virement Bancaire')">
-                    <div class="payment-method-text">
-                        🏦 Virement Bancaire
-                        <span class="payment-method-desc">Envoi de notre RIB par e-mail</span>
-                    </div>
-                </label>
-
-            </div>
-
-            <button type="submit" class="btn-pay" id="submit-btn">Payer par Carte Bancaire <span id="prix-offre"></span></button>
+            <!-- LE BOUTON UNIQUE DIRECT -->
+            <button type="submit" class="btn-pay">Valider et Payer <span id="prix-offre"></span></button>
         </form>
 
         <a href="index.html" class="back-link">← Retourner sur le site</a>
@@ -103,39 +69,22 @@
         const nomOffreElement = document.getElementById('nom-offre');
         const inputOffreElement = document.getElementById('input-offre');
         const prixOffreElement = document.getElementById('prix-offre');
-        const submitBtn = document.getElementById('submit-btn');
 
-        let prixTexte = "";
-
-        // Récupération de l'offre et du prix
         if (offre === 'essentiel') {
             nomOffreElement.innerText = "Essentiel";
             inputOffreElement.value = "Essentiel (49€)";
-            prixTexte = "(49€)";
+            prixOffreElement.innerText = "(49€)";
         } else if (offre === 'standard') {
             nomOffreElement.innerText = "Standard";
             inputOffreElement.value = "Standard (199€)";
-            prixTexte = "(199€)";
+            prixOffreElement.innerText = "(199€)";
         } else if (offre === 'premium') {
             nomOffreElement.innerText = "Premium";
             inputOffreElement.value = "Premium (499€)";
-            prixTexte = "(499€)";
+            prixOffreElement.innerText = "(499€)";
         } else {
             nomOffreElement.innerText = "Sur-mesure";
             inputOffreElement.value = "Non spécifiée";
-        }
-
-        prixOffreElement.innerText = prixTexte;
-
-        // Fonction magique qui change le texte du bouton en direct selon le choix coché
-        function updateButtonText(method) {
-            if (method === 'Carte Bancaire') {
-                submitBtn.innerHTML = `Payer par Carte Bancaire <span id="prix-offre">${prixTexte}</span>`;
-            } else if (method === 'PayPal') {
-                submitBtn.innerHTML = `Payer avec PayPal <span id="prix-offre">${prixTexte}</span>`;
-            } else if (method === 'Virement Bancaire') {
-                submitBtn.innerHTML = `Commander par Virement <span id="prix-offre">${prixTexte}</span>`;
-            }
         }
     </script>
 </body>
