@@ -109,13 +109,12 @@
         .footer-links a { color: var(--blanc); text-decoration: none; margin: 0 15px; font-size: 14px; }
         .copyright { font-size: 12px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; }
 
-        /* FORMAT TÉLÉPHONE ADAPTÉ */
+        /* FORMAT MOBILE ADAPTÉ */
         @media (max-width: 900px) {
-            .menu-burger { display: flex; } /* On affiche le bouton burger */
+            .menu-burger { display: flex; }
             
-            /* Le menu de navigation devient une marge cachée qui descend au clic */
             nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--blanc); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; }
-            nav.active { display: flex; } /* Quand le burger est cliqué, on l'affiche */
+            nav.active { display: flex; }
             
             nav a { margin: 15px 0; font-size: 18px; width: 100%; text-align: center; }
             .btn-menu { margin-left: 0; width: 100%; }
@@ -133,7 +132,7 @@
     <header>
         <div class="logo">Auto<span>Barns</span></div>
         
-        <!-- LE BOUTON À 3 BARRES (BURGER) -->
+        <!-- BOUTON BURGER SMARTPHONE -->
         <div class="menu-burger" id="burger">
             <span></span>
             <span></span>
@@ -153,7 +152,7 @@
         <div class="hero-content-box">
             <span class="badge-online">Service 100% en Ligne</span>
             <h1>Votre conseiller automobile personnel.</h1>
-            <p>Achetez l'esprit tranquille. De la citadine du quotidien à la voiture de sport, nous sécurisons votre achat de A à Z.</p>
+            <p>Achetez l'esprit tranquille. De la citadine du quotidien à la voiture de sport, nous sécurisons votre purchase de A à Z.</p>
             <div class="hero-buttons">
                 <a href="#forfaits" class="btn-primary">Découvrir nos offres</a>
                 <a href="#histoire" class="btn-secondary">Comment ça marche ?</a>
@@ -197,6 +196,7 @@
         </div>
     </section>
 
+    <!-- LES OFFRES REDIRIGENT VERS COMMANDE.HTML -->
     <section id="forfaits" class="pricing-section">
         <div class="container">
             <div class="section-header">
@@ -216,7 +216,7 @@
                         <li>Alerte sur les motorisations à éviter</li>
                         <li>Conseils d'achat généraux</li>
                     </ul>
-                    <a href="#contact" class="btn-outline">Sélectionner</a>
+                    <a href="commande.html?offre=essentiel" class="btn-outline">Sélectionner</a>
                 </div>
                 
                 <div class="price-bubble premium-bubble">
@@ -231,7 +231,7 @@
                         <li>Vérification historique (Histovec)</li>
                         <li>Analyse du prix face au marché</li>
                     </ul>
-                    <a href="#contact" class="btn-primary">Sélectionner</a>
+                    <a href="commande.html?offre=standard" class="btn-primary">Sélectionner</a>
                 </div>
 
                 <div class="price-bubble">
@@ -245,7 +245,7 @@
                         <li>Analyse des faiblesses mécaniques connues</li>
                         <li>Stratégie de négociation incluse</li>
                     </ul>
-                    <a href="#contact" class="btn-outline">Sélectionner</a>
+                    <a href="commande.html?offre=premium" class="btn-outline">Sélectionner</a>
                 </div>
             </div>
         </div>
@@ -271,7 +271,7 @@
 
     <section id="contact" class="contact-section">
         <div class="container contact-box">
-            <h2>Prêt à démarrer la recherche ?</h2>
+            <h2>Une question avant de commander ?</h2>
             <p>Laissez-nous vos coordonnées, nous vous rappelons sous 24h.</p>
             <form class="form-rounded" onsubmit="event.preventDefault(); alert('Message envoyé avec succès ! (Simulation)');">
                 <input type="text" placeholder="Votre prénom et nom" required>
@@ -298,18 +298,16 @@
         <p class="copyright">&copy; 2026 AutoBarns. Tous droits réservés.</p>
     </footer>
 
-    <!-- LE CODE SCRIPT POUR FAIRE FONCTIONNER LE BOUTON BURGER -->
+    <!-- LOGIQUE LOGICIELLE DU MENU TELEPHONE -->
     <script>
         const burger = document.getElementById('burger');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('#nav-menu a');
 
-        // Ouvre ou ferme le menu quand on clique sur les 3 barres
         burger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
 
-        // Ferme automatiquement le menu quand on clique sur un onglet
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
