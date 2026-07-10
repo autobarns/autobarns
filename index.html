@@ -97,13 +97,6 @@
         .stars { color: var(--or-champagne); margin-bottom: 15px; }
         .client-name { font-weight: 700; color: var(--bleu-nuit); }
 
-        .contact-section { padding: 60px 0; display: flex; justify-content: center; }
-        .contact-box { background: var(--blanc); padding: 60px; border-radius: 40px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.08); max-width: 700px; width: 100%; }
-        .contact-box h2 { color: var(--bleu-nuit); }
-        .form-rounded { margin-top: 30px; }
-        .form-rounded input, .form-rounded select, .form-rounded textarea { width: 100%; padding: 15px 20px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 20px; background: var(--fond-doux); font-size: 16px; outline: none; }
-        .btn-large { width: 100%; font-size: 18px; padding: 15px; }
-
         footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.7); text-align: center; padding: 40px 20px; margin-top: 50px; }
         footer .logo { color: var(--blanc); }
         .footer-links a { color: var(--blanc); text-decoration: none; margin: 0 15px; font-size: 14px; }
@@ -132,7 +125,6 @@
     <header>
         <div class="logo">Auto<span>Barns</span></div>
         
-        <!-- BOUTON BURGER SMARTPHONE -->
         <div class="menu-burger" id="burger">
             <span></span>
             <span></span>
@@ -144,7 +136,7 @@
             <a href="#histoire">L'Expertise</a>
             <a href="#forfaits">Forfaits</a>
             <a href="#avis">Avis</a>
-            <a href="#contact" class="btn-menu">Nous Contacter</a>
+            <a href="commande.html" class="btn-menu">Commander</a>
         </nav>
     </header>
 
@@ -152,7 +144,7 @@
         <div class="hero-content-box">
             <span class="badge-online">Service 100% en Ligne</span>
             <h1>Votre conseiller automobile personnel.</h1>
-            <p>Achetez l'esprit tranquille. De la citadine du quotidien à la voiture de sport, nous sécurisons votre purchase de A à Z.</p>
+            <p>Achetez l'esprit tranquille. De la citadine du quotidien à la voiture de sport, nous sécurisons votre achat de A à Z.</p>
             <div class="hero-buttons">
                 <a href="#forfaits" class="btn-primary">Découvrir nos offres</a>
                 <a href="#histoire" class="btn-secondary">Comment ça marche ?</a>
@@ -196,7 +188,6 @@
         </div>
     </section>
 
-    <!-- LES OFFRES REDIRIGENT VERS COMMANDE.HTML -->
     <section id="forfaits" class="pricing-section">
         <div class="container">
             <div class="section-header">
@@ -269,25 +260,6 @@
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
-        <div class="container contact-box">
-            <h2>Une question avant de commander ?</h2>
-            <p>Laissez-nous vos coordonnées, nous vous rappelons sous 24h.</p>
-            <form class="form-rounded" onsubmit="event.preventDefault(); alert('Message envoyé avec succès ! (Simulation)');">
-                <input type="text" placeholder="Votre prénom et nom" required>
-                <input type="email" placeholder="Votre adresse email" required>
-                <select required>
-                    <option value="">Sélectionnez un forfait</option>
-                    <option value="essentiel">Forfait Essentiel (49€)</option>
-                    <option value="standard">Forfait Standard (199€)</option>
-                    <option value="premium">Forfait Premium (499€)</option>
-                </select>
-                <textarea placeholder="Dites-nous en plus sur votre recherche (budget, modèles envisagés...)" rows="4" required></textarea>
-                <button type="submit" class="btn-primary btn-large">Envoyer ma demande</button>
-            </form>
-        </div>
-    </section>
-
     <footer>
         <div class="logo">Auto<span>Barns</span></div>
         <p>Conseiller automobile 100% en ligne.</p>
@@ -298,7 +270,6 @@
         <p class="copyright">&copy; 2026 AutoBarns. Tous droits réservés.</p>
     </footer>
 
-    <!-- LOGIQUE LOGICIELLE DU MENU TELEPHONE -->
     <script>
         const burger = document.getElementById('burger');
         const navMenu = document.getElementById('nav-menu');
