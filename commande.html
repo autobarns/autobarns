@@ -20,12 +20,18 @@
         h1 { font-size: 22px; text-align: center; margin-bottom: 30px; color: var(--bleu-nuit); }
         
         label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: var(--bleu-nuit); }
-        input, select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 15px; background: var(--fond-doux); font-size: 16px; outline: none; }
+        input[type="text"], input[type="email"], select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 15px; background: var(--fond-doux); font-size: 16px; outline: none; }
         
         .box-offre { background: #EBF0F5; padding: 15px 20px; border-radius: 15px; margin-bottom: 25px; font-weight: bold; color: var(--bleu-nuit); display: flex; justify-content: space-between; }
         
-        .card-element { border: 1px solid #ddd; padding: 15px; border-radius: 15px; background: #fff; margin-bottom: 25px; }
-        
+        /* ZONE SELECTION MODE DE PAIEMENT */
+        .payment-options { margin-bottom: 25px; }
+        .payment-method { display: flex; align-items: center; background: var(--blanc); border: 2px solid #eee; padding: 15px; border-radius: 15px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s ease; }
+        .payment-method:hover { border-color: var(--bleu-nuit); background: var(--fond-doux); }
+        .payment-method input[type="radio"] { margin-right: 15px; width: 18px; height: 18px; accent-color: var(--bleu-nuit); }
+        .payment-method-text { font-weight: 600; color: var(--bleu-nuit); font-size: 15px; }
+        .payment-method-desc { font-size: 12px; color: #666; display: block; font-weight: normal; margin-top: 2px; }
+
         .btn-pay { width: 100%; background: var(--bleu-nuit); color: white; padding: 16px; border-radius: 50px; font-size: 18px; font-weight: bold; border: none; cursor: pointer; transition: transform 0.2s; }
         .btn-pay:hover { transform: scale(1.02); }
         .back-link { display: block; text-align: center; margin-top: 20px; color: #666; text-decoration: none; font-size: 14px; }
@@ -37,7 +43,6 @@
         <div class="logo">Auto<span>Barns</span></div>
         <h1>Finalisez votre demande d'accompagnement</h1>
 
-        <!-- ACTION CONTENANT TON LIEN FORMSPREE FUTUR -->
         <form action="https://formspree.io/f/XXXXXX" method="POST">
             
             <div class="box-offre">
@@ -45,7 +50,6 @@
                 <span id="nom-offre" style="color: var(--or-champagne);">Chargement...</span>
             </div>
             
-            <!-- Champ invisible pour recevoir l'offre dans l'email -->
             <input type="hidden" name="Formule Choisie" id="input-offre">
 
             <label for="name">Votre Nom et Prénom</label>
@@ -57,9 +61,33 @@
             <label for="besoin">Votre Besoin (Budget, Modèles recherchés...)</label>
             <textarea id="besoin" name="Besoin du client" rows="4" placeholder="Ex: Je cherche une Peugeot 208 essence après 2021..." required></textarea>
 
-            <label>Paiement Sécurisé par Carte Bancaire</label>
-            <div class="card-element">
-                <span style="color: #999; font-size: 15px;">智能 4242 •••• •••• 4242 &nbsp;&nbsp;&nbsp; MM/AA &nbsp;&nbsp;&nbsp; CVC</span>
+            <label>Choisissez votre mode de paiement sécurisé</label>
+            <div class="payment-options">
+                
+                <label class="payment-method">
+                    <input type="radio" name="Mode de paiement" value="Carte Bancaire (Stripe)" checked>
+                    <div class="payment-method-text">
+                        💳 Carte Bancaire
+                        <span class="payment-method-desc">Paiement instantané et sécurisé via Stripe</span>
+                    </div>
+                </label>
+
+                <label class="payment-method">
+                    <input type="radio" name="Mode de paiement" value="PayPal">
+                    <div class="payment-method-text">
+                        🅿️ PayPal
+                        <span class="payment-method-desc">Via votre compte PayPal ou par carte</span>
+                    </div>
+                </label>
+
+                <label class="payment-method">
+                    <input type="radio" name="Mode de paiement" value="Virement Bancaire">
+                    <div class="payment-method-text">
+                        🏦 Virement Bancaire
+                        <span class="payment-method-desc">Lancement du projet dès réception des fonds</span>
+                    </div>
+                </label>
+
             </div>
 
             <button type="submit" class="btn-pay">Valider et Payer <span id="prix-offre"></span></button>
@@ -68,7 +96,6 @@
         <a href="index.html" class="back-link">← Retourner sur le site</a>
     </div>
 
-    <!-- SCRIPT QUI LIT L'URL POUR CONFIGURER LA COMMANDE -->
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const offre = urlParams.get('offre');
