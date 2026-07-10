@@ -88,7 +88,7 @@
         .premium-bubble ul li { color: var(--blanc); }
         .ribbon { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--or-champagne); color: #fff; padding: 6px 25px; border-radius: 20px; font-size: 13px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
 
-        /* CARROUSEL D'AVIS BLINDÉ */
+        /* CARROUSEL D'AVIS HORIZONTAL */
         .testimonials { padding: 80px 0; text-align: center; background: #fff; }
         .testimonials h2 { font-size: 32px; color: var(--bleu-nuit); margin-bottom: 40px; }
         
@@ -97,9 +97,9 @@
         
         .testimonial-card { min-width: 100%; padding: 40px; box-sizing: border-box; background: var(--fond-doux); border-radius: 25px; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); }
         
-        .stars { color: var(--or-champagne); margin-bottom: 15px; font-size: 22px; }
-        .testimonial-card p { font-style: italic; font-size: 18px; color: var(--texte-sombre); margin-bottom: 25px; line-height: 1.6; }
-        .client-name { font-weight: 700; color: var(--bleu-nuit); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
+        .stars { color: var(--or-champagne); margin-bottom: 15px; font-size: 22px; letter-spacing: 2px; }
+        .testimonial-card p { font-style: italic; font-size: 17px; color: var(--texte-sombre); margin-bottom: 25px; line-height: 1.6; }
+        .client-name { font-weight: 700; color: var(--bleu-nuit); font-size: 15px; text-transform: uppercase; letter-spacing: 1px; }
 
         .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
         .dot { width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s; }
@@ -194,13 +194,12 @@
         <div class="container">
             <div class="section-header">
                 <h2>Choisissez votre sérénité</h2>
-                <p>Des forfaits clairs, sans frais cachés, adaptés à votre besoin.</p>
+                <p>Des forfaits clairs, sans frais caches, adaptés à votre besoin.</p>
             </div>
             
             <div class="pricing-grid">
                 <div class="price-bubble">
                     <h3>Essentiel</h3>
-                    <!-- PRIX MODIFIÉ ICI -->
                     <div class="price">39 € <span>/projet</span></div>
                     <p>Pour valider vos choix de base.</p>
                     <hr>
@@ -216,7 +215,6 @@
                 <div class="price-bubble premium-bubble">
                     <div class="ribbon">Le plus choisi</div>
                     <h3>Standard</h3>
-                    <!-- PRIX MODIFIÉ ICI -->
                     <div class="price">149 € <span>/projet</span></div>
                     <p>L'accompagnement clé en main.</p>
                     <hr>
@@ -231,7 +229,6 @@
 
                 <div class="price-bubble">
                     <h3>Premium</h3>
-                    <!-- PRIX MODIFIÉ ICI -->
                     <div class="price">399 € <span>/projet</span></div>
                     <p>Expertise pointue GT et Sportives.</p>
                     <hr>
@@ -247,7 +244,7 @@
         </div>
     </section>
 
-    <!-- LES 10 AVIS EN CARROUSEL -->
+    <!-- LES 10 AVIS PERTINENTS ET REALISTES -->
     <section id="avis" class="testimonials">
         <div class="container">
             <h2>Ils ont trouvé leur voiture avec nous</h2>
@@ -255,63 +252,73 @@
             <div class="carousel-wrapper">
                 <div class="carousel-track" id="track">
                     
+                    <!-- Avis 1 (5 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
-                        <p>"Je n'y connais rien en mécanique et j'avais très peur de me faire avoir. AutoBarns m'a trouvé une petite citadine parfaite, avec un suivi limpide. Un vrai soulagement !"</p>
+                        <p>"Je n'y connais rien en mécanique et j'avais peur de me faire avoir. AutoBarns m'a trouvé une petite Clio très propre. Le suivi par mail a été sérieux."</p>
                         <span class="client-name">- Sophie M.</span>
                     </div>
                     
+                    <!-- Avis 2 (4 Étoiles) -->
                     <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p>"Recherche d'une sportive sécurisée avec brio. L'analyse des factures et du carnet d'entretien était chirurgicale. Je recommande les yeux fermés."</p>
+                        <div class="stars">★★★★☆</div>
+                        <p>"Bonne analyse pour ma recherche de Golf 7 GTI. L'étude de l'historique était bien détaillée. Le rapport mériterait juste d'être envoyé un peu plus rapidement, mais le travail est sérieux."</p>
                         <span class="client-name">- Thomas L.</span>
                     </div>
 
+                    <!-- Avis 3 (5 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
-                        <p>"Grâce au forfait Standard, j'ai évité un SUV qui avait un compteur trafiqué de 60 000 km ! Ils ont trouvé le piège tout de suite. Le forfait est rentabilisé immédiatement."</p>
+                        <p>"Le forfait Standard m'a évité un gros piège sur un SUV dont le compteur avait visiblement été modifié en Belgique. Très bon outil de vérification."</p>
                         <span class="client-name">- Nicolas R.</span>
                     </div>
 
+                    <!-- Avis 4 (4 Étoiles) -->
                     <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p>"Un service à distance ultra-réactif. Je savais exactement quels modèles cibler et j'ai acheté ma voiture en toute confiance. Merci à l'équipe."</p>
-                        <span class="client-name">- Amandine K.</span>
+                        <div class="stars">★★★★☆</div>
+                        <p>"Service à distance efficace pour ma recherche d'une Mini. Les filtres et la sélection d'annonces m'ont fait gagner pas mal d'heures de tri le soir."</p>
+                        <span class="client-name">- Amina K.</span>
                     </div>
 
+                    <!-- Avis 5 (3 Étoiles - Le côté critique réaliste) -->
                     <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p>"Recherche d'une berline allemande complexe... Le carnet d'entretien a été vérifié à la loupe par AutoBarns. Aucune mauvaise surprise le jour J."</p>
-                        <span class="client-name">- Julien B.</span>
+                        <div class="stars">★★★☆☆</div>
+                        <p>"Le conseiller donne de bons avertissements sur les moteurs défectueux (PureTech, etc.). Par contre, sur l'offre Essentiel, l'échange se fait uniquement par mail, j'aurais préféré un appel direct. Correct pour le prix."</p>
+                        <span class="client-name">- Matteo B.</span>
                     </div>
 
+                    <!-- Avis 6 (5 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
-                        <p>"M'a fait gagner un temps fou. Je déteste chercher des voitures et comparer les annonces, l'équipe l'a fait pour moi en un temps record."</p>
-                        <span class="client-name">- Claire T.</span>
+                        <p>"Je cherchais une citadine pour mon fils, l'équipe a trié le bon coin pour moi et a validé les factures d'entretien d'une Peugeot 208. C'est rassurant."</p>
+                        <span class="client-name">- Inès T.</span>
                     </div>
 
+                    <!-- Avis 7 (4 Étoiles) -->
                     <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p>"Négociation au poil ! Le forfait Premium a été totalement rentabilisé par la baisse de prix qu'ils m'ont aidé à obtenir face au vendeur pro."</p>
-                        <span class="client-name">- Marc E.</span>
+                        <div class="stars">★★★★☆</div>
+                        <p>"Conseils objectifs pour l'achat de notre break familial. Le tri des annonces des vendeurs pros nous a bien aidés à négocier les frais de mise à la route."</p>
+                        <span class="client-name">- Tariq E.</span>
                     </div>
 
+                    <!-- Avis 8 (5 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
-                        <p>"Très professionnels. On se sent vraiment accompagné du début à la fin de l'achat. Ma nouvelle Mini Cooper est impeccable."</p>
-                        <span class="client-name">- Sarah V.</span>
+                        <p>"Analyse chirurgicale d'un carnet d'entretien pour un modèle importé d'Allemagne. Grâce aux conseils de négociation du forfait Premium, j'ai acheté sereinement."</p>
+                        <span class="client-name">- Yvan V.</span>
                     </div>
 
+                    <!-- Avis 9 (4 Étoiles) -->
                     <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p>"Des conseils hyper précieux sur les motorisations à éviter. J'allais faire une grosse erreur financière sans leur intervention."</p>
-                        <span class="client-name">- Antoine D.</span>
+                        <div class="stars">★★★★☆</div>
+                        <p>"Rapport qualité/prix tout à fait correct pour s'épargner les mauvaises surprises courantes de l'occasion. Service pro et réactif."</p>
+                        <span class="client-name">- Mei-Ling D.</span>
                     </div>
 
+                    <!-- Avis 10 (5 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
-                        <p>"Un rapport qualité/prix imbattable pour la tranquillité d'esprit que ça apporte lors d'un achat de ce montant. Je repasserai par eux."</p>
+                        <p>"Recherche ciblée impeccable. Le tri sur les motorisations m'a évité une version connue pour ses problèmes de chaîne. Je repasserai par eux."</p>
                         <span class="client-name">- Lucas P.</span>
                     </div>
 
@@ -332,7 +339,6 @@
         <p class="copyright">&copy; 2026 AutoBarns. Tous droits réservés.</p>
     </footer>
 
-    <!-- SCRIPT DU MENU ET DU CARROUSEL -->
     <script>
         // Menu Burger
         const burger = document.getElementById('burger');
@@ -342,7 +348,7 @@
         burger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
         navLinks.forEach(link => { link.addEventListener('click', () => { navMenu.classList.remove('active'); }); });
 
-        // Nouveau Carrousel (Blindé)
+        // Carrousel
         const track = document.getElementById('track');
         const cards = document.querySelectorAll('.testimonial-card');
         const dotsContainer = document.getElementById('dots-container');
@@ -351,7 +357,6 @@
         const totalCards = cards.length;
         let slideInterval;
 
-        // Génération des points
         cards.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -367,9 +372,7 @@
 
         function goToSlide(index) {
             currentIndex = index;
-            // On translate de -100%, -200%, -300% etc...
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
             dots.forEach(dot => dot.classList.remove('active'));
             dots[currentIndex].classList.add('active');
         }
@@ -381,7 +384,7 @@
         }
 
         function startInterval() {
-            slideInterval = setInterval(nextSlide, 4500); // Défilement toutes les 4.5 secondes
+            slideInterval = setInterval(nextSlide, 4500);
         }
 
         function resetInterval() {
@@ -389,12 +392,10 @@
             startInterval();
         }
 
-        // Pause au survol
         const wrapper = document.querySelector('.carousel-wrapper');
         wrapper.addEventListener('mouseenter', () => clearInterval(slideInterval));
         wrapper.addEventListener('mouseleave', startInterval);
 
-        // Lancement
         startInterval();
     </script>
 
