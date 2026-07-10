@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoBarns | Finaliser votre commande</title>
+    <style>
+        :root {
+            --bleu-nuit: #1A2B4C;
+            --or-champagne: #D4AF37;
+            --fond-doux: #F8F9FA;
+            --blanc: #FFFFFF;
+            --texte-sombre: #333333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--fond-doux); color: var(--texte-sombre); padding: 40px 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: var(--blanc); padding: 40px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
+        .logo { font-weight: 800; font-size: 24px; color: var(--bleu-nuit); text-align: center; margin-bottom: 20px; }
+        .logo span { color: var(--or-champagne); }
+        h1 { font-size: 22px; text-align: center; margin-bottom: 30px; color: var(--bleu-nuit); }
+        
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: var(--bleu-nuit); }
+        input, select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 15px; background: var(--fond-doux); font-size: 16px; outline: none; }
+        
+        .box-offre { background: #EBF0F5; padding: 15px 20px; border-radius: 15px; margin-bottom: 25px; font-weight: bold; color: var(--bleu-nuit); display: flex; justify-content: space-between; }
+        
+        .card-element { border: 1px solid #ddd; padding: 15px; border-radius: 15px; background: #fff; margin-bottom: 25px; }
+        
+        .btn-pay { width: 100%; background: var(--bleu-nuit); color: white; padding: 16px; border-radius: 50px; font-size: 18px; font-weight: bold; border: none; cursor: pointer; transition: transform 0.2s; }
+        .btn-pay:hover { transform: scale(1.02); }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #666; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">Auto<span>Barns</span></div>
+        <h1>Finalisez votre demande d'accompagnement</h1>
+
+        <!-- ACTION CONTENANT TON LIEN FORMSPREE FUTUR -->
+        <form action="https://formspree.io/f/XXXXXX" method="POST">
+            
+            <div class="box-offre">
+                <span>Formule sélectionnée :</span>
+                <span id="nom-offre" style="color: var(--or-champagne);">Chargement...</span>
+            </div>
+            
+            <!-- Champ invisible pour recevoir l'offre dans l'email -->
+            <input type="hidden" name="Formule Choisie" id="input-offre">
+
+            <label for="name">Votre Nom et Prénom</label>
+            <input type="text" id="name" name="Nom du client" placeholder="Jean Dupont" required>
+
+            <label for="email">Votre Adresse Email</label>
+            <input type="email" id="email" name="Email du client" placeholder="jean.dupont@gmail.com" required>
+
+            <label for="besoin">Votre Besoin (Budget, Modèles recherchés...)</label>
+            <textarea id="besoin" name="Besoin du client" rows="4" placeholder="Ex: Je cherche une Peugeot 208 essence après 2021..." required></textarea>
+
+            <label>Paiement Sécurisé par Carte Bancaire</label>
+            <div class="card-element">
+                <span style="color: #999; font-size: 15px;">智能 4242 •••• •••• 4242 &nbsp;&nbsp;&nbsp; MM/AA &nbsp;&nbsp;&nbsp; CVC</span>
+            </div>
+
+            <button type="submit" class="btn-pay">Valider et Payer <span id="prix-offre"></span></button>
+        </form>
+
+        <a href="index.html" class="back-link">← Retourner sur le site</a>
+    </div>
+
+    <!-- SCRIPT QUI LIT L'URL POUR CONFIGURER LA COMMANDE -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const offre = urlParams.get('offre');
+        
+        const nomOffreElement = document.getElementById('nom-offre');
+        const inputOffreElement = document.getElementById('input-offre');
+        const prixOffreElement = document.getElementById('prix-offre');
+
+        if (offre === 'essentiel') {
+            nomOffreElement.innerText = "Essentiel";
+            inputOffreElement.value = "Essentiel (49€)";
+            prixOffreElement.innerText = "(49€)";
+        } else if (offre === 'standard') {
+            nomOffreElement.innerText = "Standard";
+            inputOffreElement.value = "Standard (199€)";
+            prixOffreElement.innerText = "(199€)";
+        } else if (offre === 'premium') {
+            nomOffreElement.innerText = "Premium";
+            inputOffreElement.value = "Premium (499€)";
+            prixOffreElement.innerText = "(499€)";
+        } else {
+            nomOffreElement.innerText = "Sur-mesure";
+            inputOffreElement.value = "Non spécifiée";
+        }
+    </script>
+</body>
+</html>
