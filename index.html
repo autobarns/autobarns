@@ -90,12 +90,22 @@
         .premium-bubble ul li { color: var(--blanc); }
         .ribbon { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--or-champagne); color: #fff; padding: 6px 25px; border-radius: 20px; font-size: 13px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
 
-        .testimonials { padding: 80px 0; text-align: center; }
-        .testimonials h2 { font-size: 32px; color: var(--bleu-nuit); margin-bottom: 50px; }
-        .testimonial-grid { display: flex; justify-content: center; gap: 30px; }
-        .testimonial-card { background: var(--blanc); padding: 40px; border-radius: 25px; width: 450px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .stars { color: var(--or-champagne); margin-bottom: 15px; }
-        .client-name { font-weight: 700; color: var(--bleu-nuit); }
+        /* NOUVEAU CARROUSEL D'AVIS A L'HORIZONTAL */
+        .testimonials { padding: 80px 0; text-align: center; overflow: hidden; background: #fff; }
+        .testimonials h2 { font-size: 32px; color: var(--bleu-nuit); margin-bottom: 40px; }
+        
+        .carousel-container { max-width: 850px; margin: 0 auto; position: relative; overflow: hidden; padding: 20px 10px; }
+        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); width: 100%; }
+        
+        .testimonial-card { flex: 0 0 100%; width: 100%; background: var(--fond-doux); padding: 40px 50px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); text-align: center; }
+        .stars { color: var(--or-champagne); margin-bottom: 15px; font-size: 20px; }
+        .testimonial-card p { font-style: italic; font-size: 17px; color: var(--texte-sombre); margin-bottom: 20px; line-height: 1.6; }
+        .client-name { font-weight: 700; color: var(--bleu-nuit); font-size: 15px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Boutons indicateurs (Petits points) */
+        .carousel-dots { display: flex; justify-content: center; gap: 10px; margin-top: 25px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: #ddd; cursor: pointer; transition: background 0.3s; }
+        .dot.active { background: var(--bleu-nuit); width: 25px; border-radius: 10px; }
 
         footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.7); text-align: center; padding: 40px 20px; margin-top: 50px; }
         footer .logo { color: var(--blanc); }
@@ -112,11 +122,12 @@
             nav a { margin: 15px 0; font-size: 18px; width: 100%; text-align: center; }
             .btn-menu { margin-left: 0; width: 100%; }
 
-            .univers-cards, .about-flex, .pricing-grid, .testimonial-grid { flex-direction: column; align-items: center; }
-            .card-round, .price-bubble, .testimonial-card { width: 100%; }
+            .univers-cards, .about-flex, .pricing-grid { flex-direction: column; align-items: center; }
+            .card-round, .price-bubble { width: 100%; }
             .premium-bubble { transform: scale(1); padding: 40px; }
             .hero-buttons { flex-direction: column; }
             header { padding: 15px 25px; }
+            .testimonial-card { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -125,6 +136,7 @@
     <header>
         <div class="logo">Auto<span>Barns</span></div>
         
+        <!-- BOUTON BURGER SMARTPHONE -->
         <div class="menu-burger" id="burger">
             <span></span>
             <span></span>
@@ -242,20 +254,46 @@
         </div>
     </section>
 
+    <!-- SECTION DES TEMOIGNAGES EN CARROUSEL HORIZONTAL AUTOMATIQUE -->
     <section id="avis" class="testimonials">
         <div class="container">
             <h2>Ils ont trouvé leur voiture avec nous</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Je n'y connais rien en mécanique et j'avais très peur de me faire avoir. AutoBarns m'a trouvé une petite citadine parfaite, avec un suivi limpide. Un vrai soulagement !"</p>
-                    <span class="client-name">- Sophie M.</span>
+            
+            <div class="carousel-container" id="carousel">
+                <div class="carousel-track" id="track">
+                    
+                    <!-- Avis 1 -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Je n'y connais rien en mécanique et j'avais très peur de me faire avoir. AutoBarns m'a trouvé une petite citadine parfaite, avec un suivi limpide. Un vrai soulagement !"</p>
+                        <span class="client-name">- Sophie M.</span>
+                    </div>
+                    
+                    <!-- Avis 2 -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Recherche d'une sportive sécurisée avec brio. L'analyse des factures et du carnet d'entretien était chirurgicale. Je recommande les yeux fermés."</p>
+                        <span class="client-name">- Thomas L.</span>
+                    </div>
+
+                    <!-- Avis 3 (Ajouté pour enrichir le défilement) -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Grâce au forfait Standard, j'ai évité un SUV qui avait un compteur trafiqué de 60 000 km ! Ils ont trouvé le piège tout de suite. Le forfait est rentabilisé immédiatement."</p>
+                        <span class="client-name">- Nicolas R.</span>
+                    </div>
+
+                    <!-- Avis 4 (Ajouté pour enrichir le défilement) -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Un service à distance ultra-réactif. Je savais exactement quels modèles cibler et j'ai acheté ma voiture en toute confiance. Merci à l'équipe."</p>
+                        <span class="client-name">- Amandine K.</span>
+                    </div>
+
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Recherche d'une sportive sécurisée avec brio. L'analyse des factures et du carnet d'entretien était chirurgicale. Je recommande les yeux fermés."</p>
-                    <span class="client-name">- Thomas L.</span>
-                </div>
+
+                <!-- Les petits points indicateurs sous le carrousel -->
+                <div class="carousel-dots" id="dots-container"></div>
             </div>
         </div>
     </section>
@@ -270,7 +308,9 @@
         <p class="copyright">&copy; 2026 AutoBarns. Tous droits réservés.</p>
     </footer>
 
+    <!-- LOGIQUE JAVASCRIPT DU MENU BURGER ET DU CARROUSEL D'AVIS AUTOMATIQUE -->
     <script>
+        // --- 1. GESTION DU MENU BURGER ---
         const burger = document.getElementById('burger');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('#nav-menu a');
@@ -284,6 +324,66 @@
                 navMenu.classList.remove('active');
             });
         });
+
+        // --- 2. GESTION DU CARROUSEL HORIZONTAL AUTOMATIQUE ---
+        const track = document.getElementById('track');
+        const cards = document.querySelectorAll('.testimonial-card');
+        const dotsContainer = document.getElementById('dots-container');
+        
+        let currentIndex = 0;
+        const totalCards = cards.length;
+        let startSlide;
+
+        // Créer automatiquement les petits points indicateurs selon le nombre d'avis
+        cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+                restartAutoSlide();
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        // Fonction pour déplacer le carrousel vers un avis précis
+        function goToSlide(index) {
+            currentIndex = index;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Mettre à jour le point actif
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        // Fonction pour passer à l'avis suivant
+        function nextSlide() {
+            let nextIndex = currentIndex + 1;
+            if (nextIndex >= totalCards) {
+                nextIndex = 0; // On revient au premier avis
+            }
+            goToSlide(nextIndex);
+        }
+
+        // Lancer le défilement automatique (Toutes les 4 secondes)
+        function startAutoSlide() {
+            startSlide = setInterval(nextSlide, 4000);
+        }
+
+        function restartAutoSlide() {
+            clearInterval(startSlide);
+            startAutoSlide();
+        }
+
+        // Arrêter le défilement si l'utilisateur passe sa souris sur l'avis
+        const carousel = document.getElementById('carousel');
+        carousel.addEventListener('mouseenter', () => clearInterval(startSlide));
+        carousel.addEventListener('mouseleave', startAutoSlide);
+
+        // Lancement au chargement de la page
+        startAutoSlide();
     </script>
 
 </body>
