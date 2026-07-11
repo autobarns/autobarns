@@ -52,13 +52,17 @@
 
         .univers-section { margin-top: -60px; position: relative; z-index: 10; padding-bottom: 80px; }
         .univers-cards { display: flex; justify-content: center; gap: 40px; }
-        .card-round { background: var(--blanc); border-radius: 25px; overflow: hidden; width: 450px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); transition: transform 0.3s; }
-        .card-round:hover { transform: translateY(-10px); }
+        
+        /* TRANSFORMATION DES BLOCS EN LIENS CLIQUABLES */
+        .card-link { text-decoration: none; color: inherit; display: block; }
+        .card-round { background: var(--blanc); border-radius: 25px; overflow: hidden; width: 450px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); cursor: pointer; }
+        .card-round:hover { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(26, 43, 76, 0.15); }
         .card-round img { width: 100%; height: 260px; object-fit: cover; }
         .card-body { padding: 30px; position: relative; }
         .icon-circle { width: 50px; height: 50px; background: var(--bleu-nuit); color: white; font-size: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; position: absolute; top: -25px; left: 30px; }
         .icon-circle.gold { background: var(--or-champagne); }
-        .card-body h3 { margin-top: 15px; margin-bottom: 10px; color: var(--bleu-nuit); }
+        .card-body h3 { margin-top: 15px; margin-bottom: 10px; color: var(--bleu-nuit); transition: color 0.3s; }
+        .card-round:hover .card-body h3 { color: var(--or-champagne); }
 
         .about-section { padding: 80px 0; }
         .about-flex { display: flex; align-items: center; gap: 60px; }
@@ -72,7 +76,7 @@
         .section-header { text-align: center; margin-bottom: 60px; }
         .section-header h2 { font-size: 36px; color: var(--bleu-nuit); }
         .pricing-grid { display: flex; justify-content: center; gap: 30px; align-items: center; }
-        .price-bubble { background: var(--blanc); padding: 40px; border-radius: 30px; width: 320px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; }
+        .price-bubble { background: var(--blanc); padding: 40px; border-radius: 30px; width: 320px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; transition: transform 0.3s; }
         .price-bubble h3 { color: var(--bleu-nuit); font-size: 24px; font-weight: 800; }
         .price-bubble .price { font-size: 44px; font-weight: 900; color: var(--texte-sombre); margin-bottom: 10px; }
         .price-bubble .price span { font-size: 18px; color: var(--texte-gris); font-weight: normal; }
@@ -89,7 +93,21 @@
         .premium-bubble ul li { color: var(--blanc); }
         .ribbon { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--or-champagne); color: #fff; padding: 6px 25px; border-radius: 20px; font-size: 13px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
 
-        /* CARROUSEL D'AVIS HORIZONTAL */
+        /* Animation flash pour la mise en valeur du forfait */
+        @keyframes highlightFlash {
+            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4); border: 2px solid var(--or-champagne); }
+            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        }
+        @keyframes highlightPremiumFlash {
+            0% { transform: scale(1.1); box-shadow: 0 20px 40px rgba(26, 43, 76, 0.2); }
+            50% { transform: scale(1.15); box-shadow: 0 30px 60px rgba(212, 175, 55, 0.5); }
+            100% { transform: scale(1.1); box-shadow: 0 20px 40px rgba(26, 43, 76, 0.2); }
+        }
+        .flash-standard { animation: highlightFlash 1.2s ease-in-out 2; }
+        .flash-premium { animation: highlightPremiumFlash 1.2s ease-in-out 2; }
+
+        /* CARROUSEL D'AVIS */
         .testimonials { padding: 80px 0; text-align: center; background: #fff; }
         .testimonials h2 { font-size: 32px; color: var(--bleu-nuit); margin-bottom: 40px; }
         
@@ -120,6 +138,7 @@
             .univers-cards, .about-flex, .pricing-grid { flex-direction: column; align-items: center; }
             .card-round, .price-bubble { width: 100%; }
             .premium-bubble { transform: scale(1); padding: 40px; }
+            .premium-bubble { margin: 20px 0; }
             .hero-buttons { flex-direction: column; }
             header { padding: 15px 25px; }
             .testimonial-card { padding: 30px 20px; }
@@ -155,25 +174,33 @@
         </div>
     </section>
 
+    <!-- LES MODULES CLIQUABLES (IDÉE 1 EFFECTUÉE) -->
     <section id="univers" class="univers-section">
         <div class="container">
             <div class="univers-cards">
-                <div class="card-round">
-                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=600&auto=format&fit=crop" alt="Gamme Quotidien et Confort">
-                    <div class="card-body">
-                        <div class="icon-circle">💼</div>
-                        <h3>Gamme Quotidien & Confort</h3>
-                        <p>Citadines dynamiques, berlines élégantes ou SUV polyvalents. Nous trions les annonces pour vous assurer de trouver un modèle fiable, agréable à conduire et parfaitement dimensionné pour vos trajets de tous les jours.</p>
+                <!-- BLOC 1 : IMAGE D'ORIGINE CONSERVÉE & ACTION VERS FORFAIT STANDARD -->
+                <a href="#forfaits" class="card-link" onclick="highlightPack('standard')">
+                    <div class="card-round">
+                        <img src="voiture.jpg" alt="Gamme Quotidien et Confort">
+                        <div class="card-body">
+                            <div class="icon-circle">💼</div>
+                            <h3>Gamme Quotidien & Confort</h3>
+                            <p>Citadines dynamiques, berlines élégantes ou SUV polyvalents. Nous trions les annonces pour vous assurer de trouver un modèle fiable, agréable à conduire et parfaitement dimensionné pour vos trajets de tous les jours.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="card-round">
-                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600&auto=format&fit=crop" alt="Gamme Passion et Émotion">
-                    <div class="card-body">
-                        <div class="icon-circle gold">🏁</div>
-                        <h3>Gamme Passion & Émotion</h3>
-                        <p>Modèles de sport, cabriolets ou configurations recherchées. Nous étudions méticuleusement les dossiers d'entretien et la clarté de l'historique pour sécuriser vos projets d'achats les plus exclusifs.</p>
+                </a>
+
+                <!-- BLOC 2 : PORSCHE CONSERVÉE & ACTION VERS FORFAIT PREMIUM -->
+                <a href="#forfaits" class="card-link" onclick="highlightPack('premium')">
+                    <div class="card-round">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600&auto=format&fit=crop" alt="Gamme Passion et Émotion">
+                        <div class="card-body">
+                            <div class="icon-circle gold">🏁</div>
+                            <h3>Gamme Passion & Émotion</h3>
+                            <p>Modèles de sport, cabriolets ou configurations recherchées. Nous étudions méticuleusement les dossiers d'entretien et la clarté de l'historique pour sécuriser vos projets d'achats les plus exclusifs.</p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -182,7 +209,7 @@
         <div class="container about-flex">
             <div class="about-text">
                 <h2>Pourquoi AutoBarns ?</h2>
-                <p>Acheter une voiture d’occasion est devenu un vrai casse-tête : entre les vices caches et le manque de transparence, il est difficile de faire le bon choix.</p>
+                <p>Acheter une voiture d’occasion est devenu un vrai casse-tête : entre les vices cachés et le manque de transparence, il est difficile de faire le bon choix.</p>
                 <p>AutoBarns est né d’un constat simple : vous méritez un expert neutre à vos côtés. Notre mission est de vous conseiller à distance et de trier pour vous les meilleures annonces du marché, afin de dénicher le véhicule idéal selon votre budget.</p>
                 <p>Nous analysons la fiabilité des modèles et sécurisons votre projet en ligne pour que vous puissiez acheter votre prochaine voiture en toute sérénité.</p>
             </div>
@@ -200,7 +227,7 @@
             </div>
             
             <div class="pricing-grid">
-                <div class="price-bubble">
+                <div class="price-bubble" id="pack-essentiel">
                     <h3>Essentiel</h3>
                     <div class="price">39 € <span>/projet</span></div>
                     <p>Pour valider vos choix de base.</p>
@@ -214,7 +241,7 @@
                     <a href="commande.html?offre=essentiel" class="btn-outline">Sélectionner</a>
                 </div>
                 
-                <div class="price-bubble premium-bubble">
+                <div class="price-bubble premium-bubble" id="pack-standard">
                     <div class="ribbon">Le plus choisi</div>
                     <h3>Standard</h3>
                     <div class="price">149 € <span>/projet</span></div>
@@ -229,7 +256,7 @@
                     <a href="commande.html?offre=standard" class="btn-primary">Sélectionner</a>
                 </div>
 
-                <div class="price-bubble">
+                <div class="price-bubble" id="pack-premium">
                     <h3>Premium</h3>
                     <div class="price">399 € <span>/projet</span></div>
                     <p>Expertise pointue GT et Sportives.</p>
@@ -338,6 +365,22 @@
 
         burger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
         navLinks.forEach(link => { link.addEventListener('click', () => { navMenu.classList.remove('active'); }); });
+
+        // Moteur d'animation des Forfaits (Idée 1)
+        function highlightPack(packType) {
+            // Nettoyage préalable des animations
+            document.getElementById('pack-standard').classList.remove('flash-standard');
+            document.getElementById('pack-premium').classList.remove('flash-premium');
+            
+            // Lancement de l'effet visuel ciblé
+            setTimeout(() => {
+                if(packType === 'standard') {
+                    document.getElementById('pack-standard').classList.add('flash-standard');
+                } else if(packType === 'premium') {
+                    document.getElementById('pack-premium').classList.add('flash-premium');
+                }
+            }, 400);
+        }
 
         // Carrousel
         const track = document.getElementById('track');
