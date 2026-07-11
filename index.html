@@ -34,9 +34,10 @@
         .menu-burger span { display: block; height: 3px; width: 100%; background-color: var(--bleu-nuit); border-radius: 3px; transition: all 0.3s ease; }
 
         .btn-primary, .btn-secondary, .btn-outline, .btn-menu { display: inline-block; padding: 12px 30px; border-radius: 50px; font-weight: 600; text-decoration: none; text-align: center; transition: all 0.3s ease; cursor: pointer; border: none; }
-        .btn-menu { background-color: var(--bleu-nuit); color: var(--blanc) !important; margin-left: 30px; }
+        .btn-menu { background-color: transparent; color: var(--bleu-nuit) !important; border: 2px solid var(--bleu-nuit); margin-left: 30px; }
+        .btn-menu:hover { background-color: var(--bleu-nuit); color: var(--blanc) !important; transform: translateY(-3px); }
         .btn-primary { background-color: var(--or-champagne); color: var(--blanc); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); }
-        .btn-primary:hover, .btn-menu:hover { transform: translateY(-3px); opacity: 0.9; }
+        .btn-primary:hover { transform: translateY(-3px); opacity: 0.9; }
         .btn-secondary { background-color: var(--blanc); color: var(--bleu-nuit); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
         .btn-outline { background-color: transparent; color: var(--bleu-nuit); border: 2px solid var(--bleu-nuit); }
         .btn-outline:hover { background-color: var(--bleu-nuit); color: var(--blanc); }
@@ -138,7 +139,8 @@
             <a href="#histoire">L'Expertise</a>
             <a href="#forfaits">Forfaits</a>
             <a href="#avis">Avis</a>
-            <a href="commande.html" class="btn-menu">Commander</a>
+            <!-- LE NOUVEAU BOUTON QUESTION AVEC MAIL TEMPORAIRE -->
+            <a href="mailto:contact@autobarns.com?subject=Question%20a%20propos%20d%27AutoBarns" class="btn-menu">Une question ?</a>
         </nav>
     </header>
 
@@ -177,12 +179,14 @@
         </div>
     </section>
 
+    <!-- NOUVELLE SECTION EXPERTISE ET HISTOIRE (6 LIGNES ENVIRON) -->
     <section id="histoire" class="about-section">
         <div class="container about-flex">
             <div class="about-text">
-                <h2>Notre bouclier contre les vices cachés.</h2>
-                <p>AutoBarns est né d'une passion automobile et d'un constat simple : le marché de l'occasion est devenu un parcours du combattant rempli de pièges (compteurs trafiqués, historiques masqués).</p>
-                <p>Notre mission est de mettre notre expertise à votre service. Nous analysons le marché, trions les annonces et épluchons les rapports à distance, où que vous soyez en France.</p>
+                <h2>Pourquoi AutoBarns ?</h2>
+                <p>Acheter une voiture d’occasion est devenu un vrai casse-tête : entre les vices cachés et le manque de transparence, il est difficile de faire le bon choix.</p>
+                <p>AutoBarns est né d’un constat simple : vous méritez un expert neutre à vos côtés. Notre mission est de vous conseiller à distance et de trier pour vous les meilleures annonces du marché, afin de dénicher le véhicule idéal selon votre budget.</p>
+                <p>Nous analysons la fiabilité des modèles et sécurisons votre projet en ligne pour que vous puissiez acheter votre prochaine voiture en toute sérénité.</p>
             </div>
             <div class="about-image">
                 <img src="expertise.jpg" alt="Expertise Auto Renault 5">
@@ -194,7 +198,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Choisissez votre sérénité</h2>
-                <p>Des forfaits clairs, sans frais caches, adaptés à votre besoin.</p>
+                <p>Des forfaits clairs, sans frais cachés, adaptés à votre besoin.</p>
             </div>
             
             <div class="pricing-grid">
@@ -244,7 +248,7 @@
         </div>
     </section>
 
-    <!-- LES 10 AVIS PERTINENTS ET REALISTES -->
+    <!-- CARROUSEL D'AVIS RÉALISTES AVEC VARIATION D'ÉTOILES ET D'ORIGINES -->
     <section id="avis" class="testimonials">
         <div class="container">
             <h2>Ils ont trouvé leur voiture avec nous</h2>
@@ -252,70 +256,60 @@
             <div class="carousel-wrapper">
                 <div class="carousel-track" id="track">
                     
-                    <!-- Avis 1 (5 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
                         <p>"Je n'y connais rien en mécanique et j'avais peur de me faire avoir. AutoBarns m'a trouvé une petite Clio très propre. Le suivi par mail a été sérieux."</p>
                         <span class="client-name">- Sophie M.</span>
                     </div>
                     
-                    <!-- Avis 2 (4 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★☆</div>
                         <p>"Bonne analyse pour ma recherche de Golf 7 GTI. L'étude de l'historique était bien détaillée. Le rapport mériterait juste d'être envoyé un peu plus rapidement, mais le travail est sérieux."</p>
                         <span class="client-name">- Thomas L.</span>
                     </div>
 
-                    <!-- Avis 3 (5 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
                         <p>"Le forfait Standard m'a évité un gros piège sur un SUV dont le compteur avait visiblement été modifié en Belgique. Très bon outil de vérification."</p>
                         <span class="client-name">- Nicolas R.</span>
                     </div>
 
-                    <!-- Avis 4 (4 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★☆</div>
                         <p>"Service à distance efficace pour ma recherche d'une Mini. Les filtres et la sélection d'annonces m'ont fait gagner pas mal d'heures de tri le soir."</p>
                         <span class="client-name">- Amina K.</span>
                     </div>
 
-                    <!-- Avis 5 (3 Étoiles - Le côté critique réaliste) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★☆☆</div>
                         <p>"Le conseiller donne de bons avertissements sur les moteurs défectueux (PureTech, etc.). Par contre, sur l'offre Essentiel, l'échange se fait uniquement par mail, j'aurais préféré un appel direct. Correct pour le prix."</p>
                         <span class="client-name">- Matteo B.</span>
                     </div>
 
-                    <!-- Avis 6 (5 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
                         <p>"Je cherchais une citadine pour mon fils, l'équipe a trié le bon coin pour moi et a validé les factures d'entretien d'une Peugeot 208. C'est rassurant."</p>
                         <span class="client-name">- Inès T.</span>
                     </div>
 
-                    <!-- Avis 7 (4 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★☆</div>
                         <p>"Conseils objectifs pour l'achat de notre break familial. Le tri des annonces des vendeurs pros nous a bien aidés à négocier les frais de mise à la route."</p>
                         <span class="client-name">- Tariq E.</span>
                     </div>
 
-                    <!-- Avis 8 (5 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
                         <p>"Analyse chirurgicale d'un carnet d'entretien pour un modèle importé d'Allemagne. Grâce aux conseils de négociation du forfait Premium, j'ai acheté sereinement."</p>
                         <span class="client-name">- Yvan V.</span>
                     </div>
 
-                    <!-- Avis 9 (4 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★☆</div>
                         <p>"Rapport qualité/prix tout à fait correct pour s'épargner les mauvaises surprises courantes de l'occasion. Service pro et réactif."</p>
                         <span class="client-name">- Mei-Ling D.</span>
                     </div>
 
-                    <!-- Avis 10 (5 Étoiles) -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
                         <p>"Recherche ciblée impeccable. Le tri sur les motorisations m'a évité une version connue pour ses problèmes de chaîne. Je repasserai par eux."</p>
